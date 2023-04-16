@@ -318,7 +318,7 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 1
+          m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &126458518
 MonoBehaviour:
@@ -1509,7 +1509,7 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 1
+          m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &891168160
 MonoBehaviour:
@@ -1818,7 +1818,7 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 1
+          m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &934997542
 MonoBehaviour:
@@ -2262,7 +2262,7 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 1
+          m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1202515016
 MonoBehaviour:
@@ -2688,31 +2688,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3184f29300570ba4eb136ff1f07c4af9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _soalSoal:
-  - pertanyaan: Apa warna mawar?
-    petunjukJawaban: {fileID: 21300000, guid: 84a62575897c00848a7406645d2296c7, type: 3}
-    pilihanJawaban:
-    - Merah
-    - Biru
-    - Hijau
-    - Ungu
-    adalahBenar: 01000000
-  - pertanyaan: Apa warna daun?
-    petunjukJawaban: {fileID: 21300000, guid: b0872f7100811234a93b9a37029b26b6, type: 3}
-    pilihanJawaban:
-    - Biru
-    - Hijau
-    - Merah
-    - Hitam
-    adalahBenar: 00010000
-  - pertanyaan: Apa warna laut?
-    petunjukJawaban: {fileID: 21300000, guid: 55a9829bf0a71ab4eb443120720d1799, type: 3}
-    pilihanJawaban:
-    - Hijau
-    - Hitam
-    - Coklat
-    - Biru
-    adalahBenar: 00000001
+  _playerProgress: {fileID: 11400000, guid: 689f4d29b1b905744a73d867c9739baa, type: 2}
+  _soalSoal: {fileID: 11400000, guid: 98ebb828b481e14489cbcaf02228d8d8, type: 2}
   _pertanyaan: {fileID: 1871082232}
   _pilihanJawaban:
   - {fileID: 1202515018}
@@ -3724,7 +3701,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _tempatPesan: {fileID: 1786185215}
   _timeBar: {fileID: 768417040}
-  _waktuJawab: 5
+  _waktuJawab: 10
 --- !u!1 &2122872285
 GameObject:
   m_ObjectHideFlags: 0
