@@ -7,21 +7,25 @@ public class LevelManager : MonoBehaviour
     [SerializeField] InisialDataGameplay _inisialDataGameplay = null;
     [SerializeField] PlayerProgres _playerProgress = null;
     [SerializeField] UI_Pertanyaan _pertanyaan = null;
+    [SerializeField] LevelPackKuis _soalSoal = null;
     [SerializeField] UI_PoinJawaban[] _pilihanJawaban = new UI_PoinJawaban[0];
     [SerializeField] GameSceneManager _gameSceneManager = null;
     [SerializeField] string _namaScenePilihMenu = string.Empty;
+    [SerializeField] PemanggilSuara _pemanggilSuara = null;
+    [SerializeField] AudioClip _suaraMenang = null;
+    [SerializeField] AudioClip _suaraKalah = null;
+    private int _indexSoal = -1;
     
 
     private void Start()
     {
-        //if (!_playerProgress.MuatProgress())
-        //{
-        //    _playerProgress.SimpanProgress();
-        //}
 
 
+        _soalSoal = _inisialDataGameplay._levelPackKuis;
+        _indexSoal = _inisialDataGameplay._soalIndexKe;
 
         NextLevel();
+        AudioManager.instance.PlayBGM(1);
         UI_PoinJawaban.EventJawabSoal += UI_PoinJawaban_EventJawabSoal;
     }
     private void OnDestroy()
@@ -37,9 +41,20 @@ public class LevelManager : MonoBehaviour
     }
     private void UI_PoinJawaban_EventJawabSoal(string Jawaban, bool AdalahBenar)
     {
-        if(AdalahBenar)
+        _pemanggilSuara.PanggilSuara(AdalahBenar ? _suaraMenang : _suaraKalah);
+
+        if (!AdalahBenar)
+            return;
+
+        string namaLevelPack = _inisialDataGameplay._levelPackKuis.name;
+        int levelTerakhir = _playerProgress.progressData.progressLevel[namaLevelPack];
+
+        
+        if(_indexSoal + 2 > levelTerakhir)
         {
             _playerProgress.progressData.koin += 20;
+            _playerProgress.progressData.progressLevel[namaLevelPack] = _indexSoal + 2;
+            _playerProgress.SimpanProgress();
         }
     }
     public void NextLevel()

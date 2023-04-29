@@ -4,6 +4,7 @@ using UnityEngine;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Runtime.CompilerServices;
+using Microsoft.Unity.VisualStudio.Editor;
 
 [CreateAssetMenu(
     fileName = "Player Progress",
@@ -20,15 +21,26 @@ public class PlayerProgres : ScriptableObject
     public MainData progressData = new MainData();
     [SerializeField] string _filename = "Contoh.txt";
 
+    [SerializeField] string _startingLevelPackName = string.Empty;
     public void SimpanProgress()
     {
-        progressData.koin = 200;
-        if (progressData.progressLevel == null)
-            progressData.progressLevel = new();
-        progressData.progressLevel.Add("Level Pack 1", 3);
-        progressData.progressLevel.Add("Level Pack 3", 5);
+        //progressData.koin = 200;
+        //if (progressData.progressLevel == null)
+        //    progressData.progressLevel = new();
+        //progressData.progressLevel.Add("Level Pack 1", 3);
+        //progressData.progressLevel.Add("Level Pack 3", 5);
 
-        string directory = Application.dataPath + "/Temporary";
+        if(progressData.progressLevel == null)
+        {
+            progressData.progressLevel = new();
+            progressData.koin= 0;
+            progressData.progressLevel.Add(_startingLevelPackName, 1);
+        }
+#if UNITY_EDITOR
+        string directory = Application.dataPath + "/temporary";
+#elif (UNITY_ANDROID) && !UNITY_EDITOR
+        string directory = Application.persistentDataPath + "/ProgresLokal/"
+#endif
         string path = directory + "/" + _filename;
 
         if(!Directory.Exists(directory))
@@ -76,7 +88,11 @@ public class PlayerProgres : ScriptableObject
 
     public bool MuatProgress()
     {
-        string directory = Application.dataPath + "/Temporary";
+#if UNITY_EDITOR
+        string directory = Application.dataPath + "/temporary";
+#elif (UNITY_ANDROID) && !UNITY_EDITOR
+        string directory = Application.persistentDataPath + "/ProgresLokal/"
+#endif
         string path = directory + "/" +_filename;
         var fileSteam = File.Open(path, FileMode.OpenOrCreate);
 

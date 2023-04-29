@@ -9,4 +9,12 @@ public class GameSceneManager : MonoBehaviour
     {
         SceneManager.LoadScene(namaScene);
     }
+    public void SceneMenu()
+    {
+        SceneManager.LoadScene("Menu Pilih Level");
+    }
+    public void SceneStart()
+    {
+        SceneManager.LoadScene("Start Menu");
+    }
 }

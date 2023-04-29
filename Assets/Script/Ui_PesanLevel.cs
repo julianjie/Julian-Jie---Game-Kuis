@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Ui_PesanLevel : MonoBehaviour
 {
+    [SerializeField] Animator _animator = null;
     [SerializeField] GameObject _opsiMenang = null;
     [SerializeField] GameObject _opsiKalah= null;
     [SerializeField] TextMeshProUGUI _tempatPesan = null;
@@ -45,6 +46,7 @@ public class Ui_PesanLevel : MonoBehaviour
             _opsiMenang.SetActive(false);
             _opsiKalah.SetActive(true);
         }
+        _animator.SetBool("Menang", adalahBenar);
     }
     private void UI_Timer_EventWaktuHabis()
     {

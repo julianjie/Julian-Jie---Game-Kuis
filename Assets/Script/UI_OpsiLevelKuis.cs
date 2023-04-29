@@ -11,6 +11,11 @@ public class UI_OpsiLevelKuis : MonoBehaviour
     [SerializeField] Button _tombolLevel = null;
     [SerializeField] TextMeshProUGUI _levelName = null;
     [SerializeField] LevelSoalKuis _levelKuis = null;
+    public bool InteraksiTombol
+    {
+        get => _tombolLevel.interactable;
+        set => _tombolLevel.interactable = value;
+    }
     void Start()
     {
         if (_levelKuis != null)
